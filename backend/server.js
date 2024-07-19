@@ -12,18 +12,15 @@ const path = require("path");
 
 const app = express();
 // Serve static files from frontend/build
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+
 // Middlewares
+app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(cors({
-    origin: 'http://localhost:3000', // Allow only this origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Allow cookies to be sent
-    allowedHeaders: 'Content-Type,Authorization'
-  }));
+
 // app.use(cors({
 //     origin: ["http://localhost:3000","https://pinvent-app.vercel.app"],
 //     credentials: true,
