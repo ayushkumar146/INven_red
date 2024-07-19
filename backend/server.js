@@ -28,7 +28,7 @@ app.use(cors({
 //     credentials: true,
 //  }));
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes Middleware
 app.use("/api/users", userRoute);
@@ -36,14 +36,16 @@ app.use("/api/products", productRoute);
 app.use("/api/contactus", contactRoute);
 
 // Routes
-app.get("/", (req, res) => {
-    res.send("Home Page");
-});
+// app.get("/", (req, res) => {
+//     res.send("Home Page");
+// });
 
 // Error Middleware
 app.use(errorHandler);
 
-
+app.use("*",function(req,res){
+    res.sendFile(path.join(__dirname,"./frontend/build/index.html"))
+   })
 const PORT = process.env.PORT || 5000;
 
 // Connect to DB and start server
