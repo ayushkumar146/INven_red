@@ -11,7 +11,8 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 
 const app = express();
-
+// Serve static files from frontend/build
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
@@ -43,9 +44,16 @@ app.use("/api/contactus", contactRoute);
 // Error Middleware
 app.use(errorHandler);
 
-app.use("*",function(req,res){
-    res.sendFile(path.join(__dirname,"./frontend/build/index.html"))
-   })
+app.get("*", (req, res) => {
+    const filePath = path.join(__dirname, "../frontend/build/index.html");
+    console.log(`Serving file from ${filePath}`);
+    res.sendFile(filePath, (err) => {
+      if (err) {
+        console.error(`Error serving file: ${err}`);
+        res.status(500).send(`Error serving file: ${err}`);
+      }
+    });
+  });
 const PORT = process.env.PORT || 5000;
 
 // Connect to DB and start server
