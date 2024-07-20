@@ -14,7 +14,10 @@ const app = express();
 // Serve static files from frontend/build
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000", "https://inven-red.onrender.com"],
+  credentials: true,
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.use(cookieParser());
