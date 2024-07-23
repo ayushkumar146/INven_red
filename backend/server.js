@@ -17,10 +17,17 @@ const app = express();
 app.use(cors({
 // <<<<<<< HEAD
   // origin: ["http://localhost:3000", "https://inven-red.onrender.com"],
+// <<<<<<< HEAD
 // =======
-  origin: ["*", "https://inven-red.onrender.com"],
+  // origin: ["*", "https://inven-red.onrender.com"],
 // >>>>>>> 26c1f2d750329a3a9047f0973a22efc64896986b
-  credentials: true, 
+  // credentials: true, 
+// =======
+// =======
+  origin: ["*"],
+// >>>>>>> 26c1f2d750329a3a9047f0973a22efc64896986b
+  credentials: true,
+// >>>>>>> 2da72ef249422b70dc5d9a39524b029248a28fc6
 }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend/build")));
