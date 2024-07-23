@@ -20,12 +20,12 @@ app.use(cors({
 // =======
   origin: ["*", "https://inven-red.onrender.com"],
 // >>>>>>> 26c1f2d750329a3a9047f0973a22efc64896986b
-  credentials: true,
+  credentials: true, 
 }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.use(cookieParser());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false})); 
 app.use(bodyParser.json());
 
 // app.use(cors({
