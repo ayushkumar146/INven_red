@@ -10,11 +10,14 @@ const errorHandler = require("./middleWare/errorMiddleware");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 
-const app = express();
+const app = express(); 
 // Serve static files from frontend/build
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000", "https://inven-red.onrender.com"],
+  credentials: true,
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.use(cookieParser());
@@ -29,7 +32,7 @@ app.use(bodyParser.json());
 // app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes Middleware
-app.use("/api/users", userRoute);
+app.use("/api/users", userRoute); 
 app.use("/api/products", productRoute);
 app.use("/api/contactus", contactRoute);
 
@@ -39,7 +42,7 @@ app.use("/api/contactus", contactRoute);
 // });
 
 // Error Middleware
-app.use(errorHandler);
+app.use(errorHandler); 
 
 app.get("*", (req, res) => {
     const filePath = path.join(__dirname, "../frontend/build/index.html");
