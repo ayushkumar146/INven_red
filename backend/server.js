@@ -15,7 +15,7 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: ["http://localhost:3000", "https://inven-red.onrender.com"],
+  origin: ["*", "https://inven-red.onrender.com"],
   credentials: true,
 }));
 app.use(express.json());
