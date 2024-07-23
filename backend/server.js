@@ -61,7 +61,7 @@ app.get("*", (req, res) => {
     res.sendFile(filePath, (err) => {
       if (err) {
         console.error(`Error serving file: ${err}`);
-        res.status(500).send(`Error serving file: ${err}`);
+        res.status(500).send(`Error serving file: ${err}`);  
       }
     });
   });
