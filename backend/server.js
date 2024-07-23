@@ -69,7 +69,7 @@ const PORT = process.env.PORT || 5000;
 
 // Connect to DB and start server
 mongoose 
-    .connect(process.env.MONGO_URI) 
+    .connect(process.env.PUBLIC_MONGO_URI) 
     .then(() => {
 
         app.listen(PORT, () => {
