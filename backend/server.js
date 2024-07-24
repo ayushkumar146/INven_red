@@ -1,4 +1,4 @@
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -75,6 +75,6 @@ mongoose
         app.listen(PORT, () => {
             console.log(`Server Running on Port ${PORT}`)
         })
-        console.log('hoga connect');
+        console.log('hoga connect');  
     })
     .catch((err) => console.log(err))
