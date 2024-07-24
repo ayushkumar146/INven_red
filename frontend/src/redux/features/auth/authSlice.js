@@ -2,6 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Function to safely parse JSON
 const safeJSONParse = (item, fallback) => {
+  if (item === null || item === undefined) {
+    return fallback;
+  }
   try {
     return JSON.parse(item) || fallback;
   } catch (e) {
